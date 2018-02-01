@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Italian Pavilion</title>
+    <meta name="description" content="360&deg; Italian Pavilion<">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+  <!-- EMD Team Swinburne -->
+  <a-scene light="defaultLightsEnabled: false">
+    <a-assets>
+      <a-asset-item id="building" src="./model/SM_ItalianPav.obj"></a-asset-item>
+      <a-asset-item id="glass" src="./model/SM_ItalianPavGlass.obj"></a-asset-item>
+      <img id="italianpavtext" src="./img/T_ItalianPavilion.jpg">
+      <img id="skymap" src="./img/T_ItalianSky.jpg">
+    </a-assets>
+
+    <a-entity 
+    obj-model="obj: #building"
+    material="shader: flat; src: #italianpavtext" 
+    position="0 -1 1">
+    </a-entity>
+    <a-entity 
+    obj-model="obj: #glass;" 
+    material="sphericalEnvMap: #skymap; roughness: 0; metalness: 0.1; opacity: 0.5; color: white" 
+    position="0 -1 1">
+    </a-entity>
+
+    <a-sky src="#skymap">  
+      <a-animation 
+      attribute="rotation"
+      dur="800000"
+      fill="forwards"
+      to="0 360 0"
+      easing="linear"
+      repeat="indefinite">
+      </a-animation>
+    </a-sky>
+
+    <a-entity camera look-controls></a-entity>
+  </a-scene>
+
+  <body>
+</html>
